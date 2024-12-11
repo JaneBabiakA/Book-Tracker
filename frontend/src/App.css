@@ -1,0 +1,59 @@
+.App {
+  text-align: center;
+  background-color: rgb(237, 244, 254);
+  size: auto;
+  height: auto;
+}
+
+.row {
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+}
+
+.rowDetails {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+}
+
+.rowDelete {
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  flex-direction: left;
+}
+
+.author {
+  display: flex;
+  flex-direction: left;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.addButton {
+  color: #000;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 10px;
+}
