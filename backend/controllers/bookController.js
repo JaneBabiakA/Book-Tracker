@@ -10,9 +10,7 @@ const BookController = {
         })
         try{
             if(req.file){
-                console.log(req.file);
-                console.log("HERE");
-                const url = await uploadFile(req.file)//("C:\\Users\\janef\\OneDrive\\Pictures\\anime girl.jpg");
+                const url = await uploadFile(req.file)
                 book.cover = url;
             }
             const newBook = await book.save();

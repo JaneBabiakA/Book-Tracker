@@ -1,11 +1,8 @@
 import BookRow from "./BookRow";
-import BookModal from "./BookModal";
 import { useEffect, useState } from 'react';
 
-export default function BookList() {
+export default function BookList({shouldReload, setShouldReload}) {
   const [books, setBooks] = useState([]);
-  const [shouldReload, setShouldReload] = useState(false);
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setShouldReload(false);
@@ -26,37 +23,18 @@ export default function BookList() {
     }
   };
 
-  const handleClose= () => {
-    setOpen(false);
-  }
-  
-  const handleSave = () => {
-    setOpen(false);
-    setShouldReload(true);
-  }
-
   return (
-    <div className="list">
-      <BookModal 
-        open={open} 
-        onClose={handleClose}
-        onSave={handleSave}
-      />
-      <div className="header">
-      <button 
-        className="addButton"
-        onClick={() => { setOpen(true) }}
-      >
-        +
-      </button>
-      </div>
-      <div className="rows">
-        { books && books.map((aBook) => 
-          <BookRow
-            aItem={aBook}
-            setShouldReload={setShouldReload}
-          />
-        )}
+    <div>
+      <div class></div>
+      <div className="list">
+        <div className="rows">
+          { books.map((aBook) => 
+              <BookRow
+                aItem={aBook}
+                setShouldReload={setShouldReload}
+              />
+          )}
+        </div>
       </div>
     </div>
   );

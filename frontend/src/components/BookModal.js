@@ -23,7 +23,6 @@ export default function BookModal({open, onClose, onSave}){
             method:'POST',
             body : formData,
             headers : {
-                //'Content-Type':'multipart/form-data',
                 'Accept': 'application/json'
             }
         })
@@ -35,46 +34,36 @@ export default function BookModal({open, onClose, onSave}){
 
     return (
         open ?
-            <div
-                style={{
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    backgroud: "rgba(0, 0, 0, 0.5)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                }}
-            >
-                <div
-                    style={{
-                        background: "white",
-                        height: 150,
-                        width: 240,
-                        margin: "auto",
-                        padding: "2%",
-                        border: "2px solid #000",
-                        borderRadius: "10px",
-                        boxShadow: "2px solid black"
-                    }}
-                >
+            <div className="modal">
+                <div className="modalContent">
                     <button
                         onClick={onClose}>
                         x
                     </button>
-                    <p>Title</p>
-                    <input
-                        value={title}
-                        onChange={(text) => setTitle(text.target.value)}
-                    />
-                    <p>Author</p>
-                    <input
-                        value={author}
-                        onChange={(text) => setAuthor(text.target.value)}
-                    />
-                    <input type="file" onChange={(e) => setCover(e.target.files[0])}></input>
+                    <div className="modalLine">
+                        <label>Title:</label>
+                        <input 
+                            className="modalElement"
+                            value={title}
+                            onChange={(text) => setTitle(text.target.value)}
+                        />
+                    </div>
+                    <div className="modalLine">
+                        <label>Author:</label>
+                        <input 
+                            className="modalElement"
+                            value={author}
+                            onChange={(text) => setAuthor(text.target.value)}
+                        />
+                    </div>
+                    <div className="modalLine">
+                        <label>Cover:</label>
+                        <input 
+                            className="modalElement" 
+                            type="file" 
+                            onChange={(e) => setCover(e.target.files[0])}
+                        />
+                    </div>
                     <button
                         onClick={createBook}
                     >

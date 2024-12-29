@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Header from "./Header";
 import { EditText } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
 
@@ -52,19 +53,25 @@ export default function BookView({}) {
     }, [id])
 
     return (
-        book ?
-            <div>
-                <EditText  
-                    name="title"
-                    defaultValue={book.title}
-                    onSave={editBook}/>
-                <EditText  
-                    name="author"
-                    defaultValue={book.author}
-                    onSave={editBook}/>
-                <img src={book.cover}/>
-            </div>
-        : 
-        <p>Not found.</p>
+        <div>
+            <Header/>
+            { book ?
+                <div>
+                    <EditText  
+                        className="bookDetails"
+                        name="title"
+                        defaultValue={book.title}
+                        onSave={editBook}/>
+                    <EditText  
+                        className="bookDetails"
+                        name="author"
+                        defaultValue={book.author}
+                        onSave={editBook}/>
+                    <img className="bookCover" src={book.cover}/>
+                </div>
+            : 
+            <p>Not found.</p>
+            }
+        </div>
     );
 }

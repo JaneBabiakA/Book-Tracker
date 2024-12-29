@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-const url = *insert your url here*;
+const url = "";
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true})
 const db = mongoose.connection;
