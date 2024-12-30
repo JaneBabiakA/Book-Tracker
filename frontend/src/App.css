@@ -5,6 +5,8 @@
   height: auto;
 }
 
+/* General */
+
 .header {
   position: sticky;
   top: 0px;
@@ -12,6 +14,35 @@
   background-color: rgb(178, 209, 178);
   padding: 1%;
 }
+
+.link {
+  color: #000;
+  text-decoration: none;
+}
+
+/* List */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.listHeader {
+  display: flex;
+  justify-content: right;
+  margin: 10px;
+}
+
+.addButton {
+  color: #000;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
 .row {
   border: 1px solid black;
   padding: 10px;
@@ -27,13 +58,6 @@
   margin-right: auto;
 }
 
-.rowDelete {
-  float: right;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .title {
   display: flex;
   flex-direction: left;
@@ -44,33 +68,14 @@
   flex-direction: left;
 }
 
-.rows {
+.rowDelete {
+  float: right;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.addButton {
-  color: #000;
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-}
-
-.listHeader {
-  display: flex;
-  justify-content: right;
-  margin: 10px;
-}
-
-.modalContent {
-  background: white;
-  margin: auto;
-  padding: 2%;
-  border: 2px solid #000;
-}
+/* Modal */
 
 .modal {
   position: fixed;
@@ -85,6 +90,13 @@
   display: flex;
 }
 
+.modalContent {
+  background: white;
+  margin: auto;
+  padding: 2%;
+  border: 2px solid #000;
+}
+
 .modalLine {
   display: flex;
   flex-direction: row;
@@ -95,16 +107,33 @@
   margin: 2%;
 }
 
-.link {
-  color: #000;
+/* Book */
+
+.bookPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.backLink {
+  color: #000000;
   text-decoration: none;
+  margin-left: 15px;
+  margin-top: 20px;
+}
+
+.bookContainer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
 }
 
 .bookCover {
-  width: 20%;
+  width: 25%;
   margin-left: 10%;
+  margin-right: 50px;
 }
 
 .bookDetails {
-  width: 20%
+  width: 20%;
+  flex-direction: column;
 }
