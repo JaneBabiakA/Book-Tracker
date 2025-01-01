@@ -90,17 +90,27 @@
   display: flex;
 }
 
-.modalContent {
+.modalInner {
   background: white;
-  margin: auto;
-  padding: 2%;
   border: 2px solid #000;
+  margin: auto;
+  padding: 1%;
+}
+
+.modalContent {
+  padding: 10%;
+  padding-top: 5%
+}
+
+.modalClose {
+  height: 25px
 }
 
 .modalLine {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .modalElement {
