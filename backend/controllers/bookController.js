@@ -6,7 +6,9 @@ const BookController = {
     async create(req, res){
         const book = new Book({
             title: req.body.title,
-            author: req.body.author
+            author: req.body.author,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate
         })
         try{
             if(req.file){
