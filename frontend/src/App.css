@@ -1,8 +1,5 @@
 .App {
-  text-align: center;
-  background-color: rgb(237, 244, 254);
-  size: auto;
-  height: auto;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 /* General */
@@ -92,9 +89,10 @@
 
 .modalInner {
   background: white;
-  border: 2px solid #000;
+  border-radius: 20px;
   margin: auto;
-  padding: 1%;
+  padding: 10px;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 .modalContent {
@@ -103,7 +101,8 @@
 }
 
 .modalClose {
-  height: 25px
+  border: none;
+  background: none;
 }
 
 .modalLine {
@@ -115,6 +114,18 @@
 
 .modalElement {
   margin: 2%;
+}
+
+.modalSaveContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.modalSave {
+  background-color: rgb(178, 209, 178);
+  border-radius: 15px;
+  border: none;
+  padding: 7px;
 }
 
 /* Book */

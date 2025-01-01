@@ -64,7 +64,7 @@ export default function BookView({}) {
     }
 
     return (
-        <div>
+        <div className="App">
             <Header/>
             <div className="bookPage">
                 <Link className="backLink" to={"/"}>

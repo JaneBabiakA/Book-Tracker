@@ -18,7 +18,7 @@ export default function HomePage({}){
     }
 
     return (
-        <div>
+        <div className="App">
             {createPortal(
                 <BookModal 
                     open={open} 

@@ -21,11 +21,11 @@ export default function BookList({shouldReload, setShouldReload}) {
     if(res.ok){
       setBooks(json);
     }
+    console.log(json);
   };
 
   return (
     <div>
-      <div class></div>
       <div className="list">
         <div className="rows">
           { books.map((aBook) => 
