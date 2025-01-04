@@ -28,7 +28,7 @@ export default function HomePage({}){
                 document.getElementById('root')
             )}
             <Header/>
-            <div className="listHeader">
+            <div className="addButtonContainer">
                 <button 
                     className="addButton"
                     onClick={() => { setOpen(true) }}

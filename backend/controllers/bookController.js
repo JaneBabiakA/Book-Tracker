@@ -33,8 +33,16 @@ const BookController = {
         }
     },
     async index(req, res){
+        const { field, direction } = req.query;
+        console.log(req.query);
         try{
-            const books = await Book.find();
+            let books;
+            if(field == "endDate"){
+                books = await Book.find().sort({ endDate: direction });
+            }
+            else{
+                books = await Book.find().sort({ startDate: direction });
+            }
             res.json(books);
         } catch(err){
             res.status(500).json({ message: err.message });

@@ -1,5 +1,4 @@
 import React from "react";
-import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaTrash } from 'react-icons/fa';
 import { useState } from "react";
@@ -24,24 +23,22 @@ export default function BookRow({aItem, setShouldReload}) {
     setIconSize(20);
   }
 
-  const span = useRef(null);
   return (
-    <div className="row">
-      <span className="rowDetails"
-            ref={span}
-            onClick={() => {
-              span?.current?.focus();
-            }}
-      >
+    <tr className="row">
+      <td className="rowDetails">
         <Link className="link" to={`/book/${aItem._id}`}>
           <p className="title">{aItem.title}</p>
           <p className="author">{aItem.author}</p>
-        </Link>
-      </span>
-      <FaTrash size={iconSize}
+        </Link></td>
+      <td className="dateColumn">{aItem.startDate ? new Date(aItem.startDate).toLocaleDateString() : null}</td>
+      <td className="dateColumn">{aItem.endDate ? new Date(aItem.endDate).toLocaleDateString() : null}</td>
+      <td className="rowDelete">
+        <FaTrash size={iconSize}
                onClick={deleteBook}
                onMouseEnter={startHover}
-               onMouseLeave={endHover}/>
-    </div>
+               onMouseLeave={endHover}
+        />
+      </td>
+    </tr>
   );
 }
