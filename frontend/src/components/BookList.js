@@ -1,10 +1,13 @@
 import BookRow from "./BookRow";
 import { useEffect, useState } from 'react';
+import { FaCaretDown } from "react-icons/fa";
+import { FaCaretUp } from "react-icons/fa";
 
 export default function BookList({shouldReload, setShouldReload}) {
   const [books, setBooks] = useState([]);
   const [field, setField] = useState("endDate");
   const [direction, setDirection] = useState("desc");
+
 
   useEffect(() => {
     setShouldReload(false);
@@ -27,14 +30,22 @@ export default function BookList({shouldReload, setShouldReload}) {
   };
 
   const changeSort = (aField) => {
-    if(aField == field){
-      setDirection(direction == "desc" ? "asc" : "desc"); // Flip sort direction
+    console.log(field, direction);
+    if(aField === field){
+      setDirection(direction === "desc" ? "asc" : "desc"); // Flip sort direction
     }
     else {
       setField(aField);
-      setDirection("desc"); // Reset sort direction
+      setDirection("asc"); // Reset sort direction
     }
     setShouldReload(true);
+  }
+
+  let arrow;
+  if(direction == "desc"){
+    arrow = <FaCaretDown/>;
+  } else {
+    arrow = <FaCaretUp/>;
   }
 
 
@@ -43,23 +54,29 @@ export default function BookList({shouldReload, setShouldReload}) {
       <table className="list">
         <thead>
         <tr className="row">
-          <th className="titleColumn">
-            <div className="listHeader">
-              Title & Author
-            </div>
+          <th className="titleCell">
+            <p onClick={() => changeSort("title") }>
+              Title
+              { field === "title" ? arrow : null }
+            </p>
           </th>
-          <th className="dateColumn">
-            <div className="listHeader">
-              <button  onClick={() => changeSort("startDate") }>
-                Start Date
-              </button>
-            </div>
+          <th className="cell">
+            <p onClick={() => changeSort("author") }>
+              Author
+              { field === "author" ? arrow : null }
+            </p>
           </th>
-          <th className="dateColumn">
-            <div className="listHeader"
-                  onClick={() => changeSort("endDate") }>
+          <th className="cell">
+            <p onClick={() => changeSort("startDate") }>
+              Start Date
+              { field === "startDate" ? arrow : null }
+            </p>
+          </th>
+          <th className="cell">
+            <p onClick={() => changeSort("endDate") }>
               End Date
-            </div>
+              { field === "endDate" ? arrow : null }
+            </p>
           </th>
         </tr>
         </thead>

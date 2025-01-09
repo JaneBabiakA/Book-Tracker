@@ -4,7 +4,7 @@ import { FaTrash } from 'react-icons/fa';
 import { useState } from "react";
 
 export default function BookRow({aItem, setShouldReload}) {
-  const [iconSize, setIconSize] = useState(20);
+  const [iconSize, setIconSize] = useState("");
   const deleteBook = async () => {
     const res = await fetch('http://localhost:8080/api/books/' + aItem._id, {
       method:'DELETE',
@@ -16,28 +16,25 @@ export default function BookRow({aItem, setShouldReload}) {
   }
 
   const startHover = () => {
-    setIconSize(23);
+    setIconSize(18);
   }
 
   const endHover = () => {
-    setIconSize(20);
+    setIconSize("");
   }
 
   return (
     <tr className="row">
-      <td className="rowDetails">
-        <Link className="link" to={`/book/${aItem._id}`}>
-          <p className="title">{aItem.title}</p>
-          <p className="author">{aItem.author}</p>
-        </Link></td>
-      <td className="dateColumn">{aItem.startDate ? new Date(aItem.startDate).toLocaleDateString() : null}</td>
-      <td className="dateColumn">{aItem.endDate ? new Date(aItem.endDate).toLocaleDateString() : null}</td>
+      <td className="titleCell">
+        <Link className="link" to={`/book/${aItem._id}`}>{aItem.title}</Link></td>
+      <td className="cell">{aItem.author}</td>
+      <td className="cell">{aItem.startDate ? new Date(aItem.startDate).toLocaleDateString() : null}</td>
+      <td className="cell">{aItem.endDate ? new Date(aItem.endDate).toLocaleDateString() : null}</td>
       <td className="rowDelete">
         <FaTrash size={iconSize}
                onClick={deleteBook}
                onMouseEnter={startHover}
-               onMouseLeave={endHover}
-        />
+               onMouseLeave={endHover}/>
       </td>
     </tr>
   );
