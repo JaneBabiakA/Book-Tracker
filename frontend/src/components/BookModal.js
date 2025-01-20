@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
 
 export default function BookModal({open, onClose, onSave}){
     const [buttonColour, setButtonColour] = useState("");
@@ -67,40 +66,40 @@ export default function BookModal({open, onClose, onSave}){
                         x
                     </button>
                     <div className="modalContent">
-                        <div className="modalLine">
+                        <div className="inputLine">
                             <label>Title:</label>
                             <input 
-                                className="modalElement"
+                                className="inputElement"
                                 value={title}
                                 onChange={(text) => setTitle(text.target.value)}
                             />
                         </div>
-                        <div className="modalLine">
+                        <div className="inputLine">
                             <label>Author:</label>
                             <input 
-                                className="modalElement"
+                                className="inputElement"
                                 value={author}
                                 onChange={(text) => setAuthor(text.target.value)}
                             />
                         </div>
-                        <div className="modalLine">
+                        <div className="inputLine">
                             <label>Start date:</label>
-                            <input className="modalElement"
+                            <input className="inputElement"
                                     type="date"
                                     onChange={(date) => setStartDate(date.target.value)}
                             />
                         </div>
-                        <div className="modalLine">
+                        <div className="inputLine">
                             <label>End date:</label>
-                            <input className="modalElement"
+                            <input className="inputElement"
                                     type="date"
                                     onChange={(date) => setEndDate(date.target.value)}
                             />
                         </div>
-                        <div className="modalLine">
+                        <div className="inputLine">
                             <label>Cover:</label>
                             <input 
-                                className="modalElement" 
+                                className="inputElement" 
                                 type="file" 
                                 onChange={(e) => setCover(e.target.files[0])}
                             />

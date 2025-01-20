@@ -1,9 +1,11 @@
-import BookRow from "./BookRow";
 import { useEffect, useState } from 'react';
+import { useAuthContext } from "../hooks/useAuthContext";
+import BookRow from "./BookRow";
 import { FaCaretDown } from "react-icons/fa";
 import { FaCaretUp } from "react-icons/fa";
 
 export default function BookList({shouldReload, setShouldReload}) {
+  const { token } = useAuthContext();
   const [books, setBooks] = useState([]);
   const [field, setField] = useState("endDate");
   const [direction, setDirection] = useState("desc");
@@ -15,9 +17,12 @@ export default function BookList({shouldReload, setShouldReload}) {
   }, [shouldReload]);
 
   const getBooks = async () => {
+    console.log(token);
+    console.log('here^')
     const res = await fetch(`http://localhost:8080/api/books?field=${field}&direction=${direction}`, {
       method:'GET',
       headers : {
+        'Authorization' : `Bearer ${token}`,
         'Content-Type':'application/json',
         'Accept': 'application/json'
       }
@@ -26,7 +31,6 @@ export default function BookList({shouldReload, setShouldReload}) {
     if(res.ok){
       setBooks(json);
     }
-    console.log(json);
   };
 
   const changeSort = (aField) => {

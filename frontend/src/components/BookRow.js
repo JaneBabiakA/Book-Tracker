@@ -9,7 +9,7 @@ export default function BookRow({aItem, setShouldReload}) {
     const res = await fetch('http://localhost:8080/api/books/' + aItem._id, {
       method:'DELETE',
     });
-    const json = await res.json();
+    await res.json();
     if(res.ok){
       setShouldReload(true);
     }
@@ -26,7 +26,7 @@ export default function BookRow({aItem, setShouldReload}) {
   return (
     <tr className="row">
       <td className="titleCell">
-        <Link className="link" to={`/book/${aItem._id}`}>{aItem.title}</Link></td>
+        <Link className="link" to={`/${aItem._id}`}>{aItem.title}</Link></td>
       <td className="cell">{aItem.author}</td>
       <td className="cell">{aItem.startDate ? new Date(aItem.startDate).toLocaleDateString() : null}</td>
       <td className="cell">{aItem.endDate ? new Date(aItem.endDate).toLocaleDateString() : null}</td>

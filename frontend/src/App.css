@@ -4,6 +4,13 @@
 
 /* General */
 
+.link {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Header */
+
 .header {
   position: sticky;
   top: 0px;
@@ -12,16 +19,74 @@
   padding: 1%;
 }
 
-.link {
+.mainLink {
   color: #000;
   text-decoration: none;
+  font-size: 18px;
+}
+
+.logoutLink {
+  color: #000; 
+  float: right;
+  font-size: 15px;
+}
+
+/* Login */
+
+.loginContainer {
+  width: 100%;
+  display: flex;
+  margin: 20px;
+  position: fixed;
+  left: 0;
+  right:0;
+  overflow: auto;
+}
+
+.loginInner {
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.loginOption {
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.loginTitle {
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.loginInput {
+  margin: 5px;
+  padding: 6px;
+  font-family: inherit;
+}
+
+.loginButton {
+  background-color: rgb(178, 209, 178);
+  border: none;
+  border-radius: 2px;
+  padding: 6px;
+  margin: 5px;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 /* List */
 
 .listContainer {
   display: flex;
-  margin: 10px;
+  margin: 20px;
 }
 
 .list {
@@ -100,15 +165,15 @@
   background: none;
 }
 
-.modalLine {
+.inputLine {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.modalElement {
-  margin: 2%;
+.inputElement {
+  margin: 5px;
 }
 
 .modalSaveContainer {

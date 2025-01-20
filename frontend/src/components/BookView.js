@@ -1,13 +1,14 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import { EditText } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function BookView({}) {
     const { id } = useParams();
+    const token = useAuthContext();
     const [book, setBook] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -16,6 +17,7 @@ export default function BookView({}) {
         const res = await fetch('http://localhost:8080/api/books/' + id, {
             method:'GET',
             headers: {
+                'Authorization' : `Bearer ${token.token}`,
                 'Content-Type':'application/json',
                 'Accept': 'application/json'
             }
@@ -26,9 +28,6 @@ export default function BookView({}) {
             setBook(json);
         }
     };
-
-    //TODO: add keys to list
-    //use reload context
 
     const editBook = async ({ name, value }) => {
         const book = {};
@@ -41,15 +40,14 @@ export default function BookView({}) {
             method: 'PUT',
             body: JSON.stringify(book),
             headers: {
+                'Authorization' : `Bearer ${token.token}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
         });
         const json = res.json();
         if(res.ok){
-            console.log(json);
             setBook(json);
-            console.log(book.title);
         }
     };
 
