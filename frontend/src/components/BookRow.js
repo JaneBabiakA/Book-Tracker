@@ -2,12 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaTrash } from 'react-icons/fa';
 import { useState } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function BookRow({aItem, setShouldReload}) {
+  const { token } = useAuthContext();
   const [iconSize, setIconSize] = useState("");
   const deleteBook = async () => {
     const res = await fetch('http://localhost:8080/api/books/' + aItem._id, {
       method:'DELETE',
+      headers : {
+        'Authorization' : `Bearer ${token}`
+    }
     });
     await res.json();
     if(res.ok){

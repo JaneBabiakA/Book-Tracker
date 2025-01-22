@@ -8,7 +8,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function BookView({}) {
     const { id } = useParams();
-    const token = useAuthContext();
+    const { token } = useAuthContext();
     const [book, setBook] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -17,7 +17,7 @@ export default function BookView({}) {
         const res = await fetch('http://localhost:8080/api/books/' + id, {
             method:'GET',
             headers: {
-                'Authorization' : `Bearer ${token.token}`,
+                'Authorization' : `Bearer ${token}`,
                 'Content-Type':'application/json',
                 'Accept': 'application/json'
             }
@@ -40,7 +40,7 @@ export default function BookView({}) {
             method: 'PUT',
             body: JSON.stringify(book),
             headers: {
-                'Authorization' : `Bearer ${token.token}`,
+                'Authorization' : `Bearer ${token}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }

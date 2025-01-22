@@ -17,8 +17,6 @@ export default function BookList({shouldReload, setShouldReload}) {
   }, [shouldReload]);
 
   const getBooks = async () => {
-    console.log(token);
-    console.log('here^')
     const res = await fetch(`http://localhost:8080/api/books?field=${field}&direction=${direction}`, {
       method:'GET',
       headers : {
@@ -34,7 +32,6 @@ export default function BookList({shouldReload, setShouldReload}) {
   };
 
   const changeSort = (aField) => {
-    console.log(field, direction);
     if(aField === field){
       setDirection(direction === "desc" ? "asc" : "desc"); // Flip sort direction
     }

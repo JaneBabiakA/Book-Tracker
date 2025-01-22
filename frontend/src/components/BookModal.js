@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function BookModal({open, onClose, onSave}){
+    const { token } = useAuthContext();
     const [buttonColour, setButtonColour] = useState("");
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
@@ -39,6 +41,7 @@ export default function BookModal({open, onClose, onSave}){
             method:'POST',
             body : formData,
             headers : {
+                'Authorization' : `Bearer ${token}`,
                 'Accept': 'application/json'
             }
         })

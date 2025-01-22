@@ -86,26 +86,33 @@
 
 .listContainer {
   display: flex;
-  margin: 20px;
+  margin: 15px;
+  margin-top: 0px;
 }
 
 .list {
   border: 1px solid black; 
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .addButtonContainer {
   display: flex;
   justify-content: right;
-  margin: 10px;
+  margin: 5px;
+  margin-right: 15px;
 }
 
 .cell {
   display: flex;
   align-items: center;
   width: 24%;
+  padding: 5px;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .addButton {
@@ -123,7 +130,10 @@
   display: flex;
   align-items: center;
   width: 25%;
-  padding-left: 5px;
+  padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .rowDelete {

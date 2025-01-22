@@ -10,9 +10,8 @@ export const AuthContextProvider = ({ children }) => {
 
     useEffect(()=> {
         const value = cookie.get("TOKEN");
-        console.log(cookie.get("EXPIRY"));
         if(new Date(cookie.get("EXPIRY")) > new Date()){
-            console.log("not expired!");
+            //TODO
         }
         if(value){
           setToken(value);

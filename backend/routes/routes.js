@@ -9,7 +9,7 @@ const BookController = require('../controllers/bookController.js');
 router.post("/users/register", UserController.create);
 router.post("/users/login", UserController.login);
 
-//router.post('/books', auth, upload.single('cover'), BookController.create);
+router.post('/books', auth, upload.single('cover'), BookController.create);
 router.get('/books/:id', auth, BookController.get);
 router.get('/books', auth, BookController.index);
 router.put('/books/:id', auth, BookController.update);
