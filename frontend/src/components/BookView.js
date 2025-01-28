@@ -30,11 +30,19 @@ export default function BookView({}) {
     };
 
     const editBook = async ({ name, value }) => {
+        console.log(name, value);
         const book = {};
         if(name === "title"){
             book.title = value;
-        } else {
+        } 
+        else if(name === "author"){
             book.author = value;
+        } 
+        else if(name === "startDate"){
+            book.startDate = value;
+        } 
+        else if(name == "endDate"){
+            book.endDate = value;
         }
         const res = await fetch('http://localhost:8080/api/books/' + id, {
             method: 'PUT',
@@ -45,10 +53,11 @@ export default function BookView({}) {
                 'Accept': 'application/json'
             }
         });
-        const json = res.json();
+        const json = await res.json();
         if(res.ok){
             setBook(json);
         }
+        console.log(json);
     };
 
     useEffect(() => {
@@ -72,16 +81,30 @@ export default function BookView({}) {
                     <div className="bookContainer">
                         <img className="bookCover" src={book.cover}/>
                         <div className="bookDetails">
-                            <EditText  
-                                className="bookDetails"
+                            <EditText
                                 name="title"
                                 defaultValue={book.title}
                                 onSave={editBook}/>
-                            <EditText  
-                                className="bookDetails"
+                            <EditText
                                 name="author"
                                 defaultValue={book.author}
                                 onSave={editBook}/>
+                            <div>
+                                Read dates: 
+                                <input className="inputElement"
+                                    name="startDate"
+                                    type="date"
+                                    defaultValue={book ? new Date(book.startDate).toISOString().split('T')[0] : null}
+                                    onChange={(e) => editBook({ name: "startDate", value: e.target.value} )}
+                                />
+                                -
+                                <input className="inputElement"
+                                    name="endDate"
+                                    type="date"
+                                    defaultValue={book ? new Date(book.endDate).toISOString().split('T')[0] : null}
+                                    onChange={(e) => editBook({ name: "endDate", value: e.target.value} )}
+                                />
+                            </div>
                         </div>
                     </div>
                 : 

@@ -33,8 +33,8 @@ export default function BookRow({aItem, setShouldReload}) {
       <td className="titleCell">
         <Link className="link" to={`/${aItem._id}`}>{aItem.title}</Link></td>
       <td className="cell">{aItem.author}</td>
-      <td className="cell">{aItem.startDate ? new Date(aItem.startDate).toLocaleDateString() : null}</td>
-      <td className="cell">{aItem.endDate ? new Date(aItem.endDate).toLocaleDateString() : null}</td>
+      <td className="cell">{aItem.startDate ? new Date(aItem.startDate).toISOString().split('T')[0] : null}</td>
+      <td className="cell">{aItem.endDate ? new Date(aItem.endDate).toISOString().split('T')[0] : null}</td>
       <td className="rowDelete">
         <FaTrash size={iconSize}
                onClick={deleteBook}

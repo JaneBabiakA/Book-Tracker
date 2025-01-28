@@ -4,7 +4,7 @@ const credentials = require(".\\firebase.json");
 
 firebase.initializeApp({
   credential: firebase.credential.cert(credentials),
-  storageBucket: 'gs://book-tracker-2ff2e.firebasestorage.app'
+  storageBucket: ''
 });
 
 

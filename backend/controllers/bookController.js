@@ -56,8 +56,14 @@ const BookController = {
             if(req.body.title){
                 book.title = req.body.title;
             }
-            if(req.body.author){
+            else if(req.body.author){
                 book.author = req.body.author;
+            }
+            else if(req.body.startDate){
+                book.startDate = req.body.startDate;
+            }
+            else if(req.body.endDate){
+                book.endDate = req.body.endDate;
             }
             const updatedBook = await book.save();
             res.json(updatedBook);
